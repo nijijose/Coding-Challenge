@@ -20,7 +20,7 @@ app.get('/home',function(req,res){
     });
 });
 
-app.post('/home/mailer',function(req,res){
+app.post('/mailer',function(req,res){
    var mail = req.body.email;
    console.log(mail);
    // res.send(mail);
