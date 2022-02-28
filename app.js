@@ -50,7 +50,8 @@ transporter.sendMail(mailOptions, function(err, data) {
     if (err) {
       console.log("Error " + err);
       res.send("Something Went Wrong");
-    } else {
+    } 
+    else {
       console.log("Email sent successfully");
       res.send("Mail Sent Successfully");
     }
