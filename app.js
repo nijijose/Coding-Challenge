@@ -1,5 +1,7 @@
 const express = require('express');
 
+require('dotenv').config();
+
 const app = new express();
 const nodemailer = require('nodemailer');
 
@@ -26,30 +28,33 @@ app.post('/mailer',function(req,res){
    // res.send(mail);
 
    let transporter = nodemailer.createTransport({
-       service: 'outlook',
-       auth: {
-           user: 'annkevin34@outlook.com',
-           pass: 'Qazbcd@123'
-       }
-   });
+    service: 'gmail',
+    auth: {
+      type: 'OAuth2',
+      user: process.env.MAIL_USERNAME,
+      pass: process.env.MAIL_PASSWORD,
+      clientId: process.env.OAUTH_CLIENTID,
+      clientSecret: process.env.OAUTH_CLIENT_SECRET,
+      refreshToken: process.env.OAUTH_REFRESH_TOKEN
+    }
+  });
 
    let mailOptions = {
-    from: 'annkevin34@outlook.com', 
-    to: 'norahann587@gmail.com', 
+    from: 'norahann587@gmail.com', 
+    to: 'nijijose378@gmail.com', 
     subject: 'Nodemailer - Test',
     text: 'Wooohooo it works!!'
 };
 
-transporter.sendMail(mailOptions, (err, info) => {
+transporter.sendMail(mailOptions, function(err, data) {
     if (err) {
-        console.log(err);
-        res.send("Something Went Wrong");
+      console.log("Error " + err);
+      res.send("Something Went Wrong");
+    } else {
+      console.log("Email sent successfully");
+      res.send("Mail Sent Successfully");
     }
-    else{
-        console.log("Mail Sent Successfully");
-        res.send("Mail Sent Successfully");
-    }
-});
+  });
 
 });
 
