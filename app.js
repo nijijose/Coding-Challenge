@@ -1,7 +1,7 @@
 const express = require('express');
 
-const dotenv = require('dotenv');
-dotenv.config();
+
+require('dotenv').config();
 
 const app = new express();
 const nodemailer = require('nodemailer');
