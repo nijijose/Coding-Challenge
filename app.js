@@ -23,8 +23,8 @@ app.get('/home',function(req,res){
 });
 
 app.post('/mailer',function(req,res){
-   var mail = req.body.email;
-   console.log(mail);
+   
+   console.log(req.body.email);
    // res.send(mail);
 
    let transporter = nodemailer.createTransport({
@@ -41,7 +41,7 @@ app.post('/mailer',function(req,res){
 
    let mailOptions = {
     from: 'norahann587@gmail.com', 
-    to: 'nijijose378@gmail.com', 
+    to: req.body.email, 
     subject: 'Nodemailer - Test',
     text: 'Wooohooo it works!!'
 };
