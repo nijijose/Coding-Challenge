@@ -53,7 +53,7 @@ transporter.sendMail(mailOptions, function(err, data) {
     } 
     else {
       console.log("Email sent successfully");
-      res.send("Mail Sent Successfully");
+      res.send("<h4>Mail Sent Successfully</h4>");
     }
   });
 
