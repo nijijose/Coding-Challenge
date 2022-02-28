@@ -42,14 +42,14 @@ app.post('/mailer',function(req,res){
    let mailOptions = {
     from: 'norahann587@gmail.com', 
     to: req.body.email, 
-    subject: 'Nodemailer - Test',
+    subject: 'Coding Challenge #2',
     text: 'Wooohooo it works!!'
 };
 
 transporter.sendMail(mailOptions, function(err, data) {
     if (err) {
       console.log("Error " + err);
-      res.send("Something Went Wrong");
+      res.send("<h4>Something Went Wrong</h4>");
     } 
     else {
       console.log("Email sent successfully");
